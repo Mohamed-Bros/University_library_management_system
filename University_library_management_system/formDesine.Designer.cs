@@ -200,6 +200,7 @@
             this.btnAuthor.Text = "اعدادات المؤالفين";
             this.btnAuthor.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAuthor.UseVisualStyleBackColor = false;
+            this.btnAuthor.Click += new System.EventHandler(this.btnAuthor_Click);
             // 
             // btnCatogre
             // 
@@ -217,6 +218,7 @@
             this.btnCatogre.Text = "اعدادات الفئات";
             this.btnCatogre.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCatogre.UseVisualStyleBackColor = false;
+            this.btnCatogre.Click += new System.EventHandler(this.btnCatogre_Click);
             // 
             // MenuBookTime
             // 
@@ -380,6 +382,7 @@
             this.btnborrowsSetting.Text = "اعدادات المستعيرين";
             this.btnborrowsSetting.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnborrowsSetting.UseVisualStyleBackColor = false;
+            this.btnborrowsSetting.Click += new System.EventHandler(this.btnborrowsSetting_Click);
             // 
             // btnborrowingSetting
             // 

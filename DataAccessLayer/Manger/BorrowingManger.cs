@@ -10,20 +10,22 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Manger
 {
-    public class BorrorwerManger
+    public class BorrowingManger
     {
-
-
-        public ValidationResult AddBorrower(Borrower borrower)
+        public ValidationResult AddBorrower(Borrowing borrowing)
         {
             using (var Context = new UniversityLibraryManagementEntities())
             {
-                var BorrowerValidation = new BorrowesValidator(Context);
-                var reslut = BorrowerValidation.Validate(borrower);
+                var BorrorwingValidation = new BorrowingValidator(Context);
+                var reslut = BorrorwingValidation.Validate(borrowing);
 
                 if (reslut.IsValid)
                 {
-                    Context.Borrowers.Add(borrower);
+                    Book  book = Context.Books.Find(borrowing.Book_ID) ;
+                    book.Copies--;
+                        
+
+                    Context.Borrowings.Add(borrowing);
                     Context.SaveChanges();
                 }
 
@@ -31,33 +33,33 @@ namespace DataAccessLayer.Manger
             }
         }
 
-        public List<Borrower> ReadeBorrower()
+        public List<Borrowing> ReadeBorrower()
         {
             using (var Context = new UniversityLibraryManagementEntities())
             {
-                return Context.Borrowers.ToList();
+                return Context.Borrowings.ToList();
             }
         }
 
-        public Borrower FindBorrower(int id)
+        public Borrowing FindBorrower(int id)
         {
             using (var Context = new UniversityLibraryManagementEntities())
             {
-                return Context.Borrowers.Find(id);
+                return Context.Borrowings.Find(id);
             }
         }
 
-        public ValidationResult UpdateBorrower(Borrower borrowerUpdate)
+        public ValidationResult UpdateBorrower(Borrowing borrowingUpdate)
         {
             using (var Context = new UniversityLibraryManagementEntities())
             {
-                var borrowerValidation = new BorrowesValidator(Context);
-                var reslut = borrowerValidation.Validate(borrowerUpdate);
+                var borrowingValidation = new BorrowingValidator(Context);
+                var reslut = borrowingValidation.Validate(borrowingUpdate);
 
                 if (reslut.IsValid)
                 {
 
-                    Context.Borrowers.AddOrUpdate(borrowerUpdate);
+                    Context.Borrowings.AddOrUpdate(borrowingUpdate);
 
                     Context.SaveChanges();
 
@@ -72,39 +74,35 @@ namespace DataAccessLayer.Manger
         {
             using (var Context = new UniversityLibraryManagementEntities())
             {
-                Borrower borrower = Context.Borrowers.Find(id);
+                Borrowing borrowing = Context.Borrowings.Find(id);
 
-                if (borrower != null)
+                if (borrowing != null)
                 {
-                    Context.Borrowers.Remove(borrower);
+                    Context.Borrowings.Remove(borrowing);
                     Context.SaveChanges();
                 }
             }
         }
 
-        public List<Borrower> FilterBorrower(String borrowerName, String phonNuber)
+        public List<Borrowing> FilterBorrower(int? idBorrower, int? idBook)
         {
             using (var Context = new UniversityLibraryManagementEntities())
             {
 
-                IQueryable<Borrower> query = Context.Borrowers;
+                IQueryable<Borrowing> query = Context.Borrowings;
 
-                string searchName = borrowerName.Trim();
-                string searchphonNumber = phonNuber.Trim();
-
-
-                if (!string.IsNullOrEmpty(searchphonNumber))
+                if (idBorrower > 0 && idBorrower != null)
                 {
-                    query = query.Where(e => e.Phone_Number.Contains(searchphonNumber.ToString()));
+                    query = query.Where(e => e.Borrower_ID == idBorrower);
+                }
+
+                if (idBook > 0 && idBook != null)
+                {
+                    query = query.Where(e => e.Book_ID ==idBook);
                 }
 
 
-                if (!string.IsNullOrEmpty(searchName))
-                {
-                    query = query.Where(e => e.Name.Contains(searchName));
-                }
-
-                List<Borrower> filteredResults = query.ToList();
+                List<Borrowing> filteredResults = query.ToList();
 
                 return filteredResults;
             }

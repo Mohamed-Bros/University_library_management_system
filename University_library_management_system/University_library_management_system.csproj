@@ -192,18 +192,6 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Borrowers_Form.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Borrowers_Form.Designer.cs">
-      <DependentUpon>Borrowers_Form.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Borrowing_Form.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Borrowing_Form.Designer.cs">
-      <DependentUpon>Borrowing_Form.cs</DependentUpon>
-    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -215,6 +203,24 @@
     </Compile>
     <Compile Include="FormAplliction\Author_Form.Designer.cs">
       <DependentUpon>Author_Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormAplliction\Borrower_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAplliction\Borrower_Form.Designer.cs">
+      <DependentUpon>Borrower_Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormAplliction\Borrowing_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAplliction\Borrowing_Form.Designer.cs">
+      <DependentUpon>Borrowing_Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormAplliction\Category_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAplliction\Category_Form.Designer.cs">
+      <DependentUpon>Category_Form.cs</DependentUpon>
     </Compile>
     <Compile Include="formDesine.cs">
       <SubType>Form</SubType>
@@ -230,17 +236,20 @@
     <Compile Include="test.Designer.cs">
       <DependentUpon>test.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Borrowers_Form.resx">
-      <DependentUpon>Borrowers_Form.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Borrowing_Form.resx">
-      <DependentUpon>Borrowing_Form.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormAplliction\Author_Form.resx">
       <DependentUpon>Author_Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAplliction\Borrower_Form.resx">
+      <DependentUpon>Borrower_Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAplliction\Borrowing_Form.resx">
+      <DependentUpon>Borrowing_Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAplliction\Category_Form.resx">
+      <DependentUpon>Category_Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="formDesine.resx">
       <DependentUpon>formDesine.cs</DependentUpon>
@@ -259,7 +268,11 @@
       <DependentUpon>test.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\DataAccessLayer.Data.Author.datasource" />
     <None Include="Properties\DataSources\DataAccessLayer.Data.Book.datasource" />
+    <None Include="Properties\DataSources\DataAccessLayer.Data.Borrower.datasource" />
+    <None Include="Properties\DataSources\DataAccessLayer.Data.Borrowing.datasource" />
+    <None Include="Properties\DataSources\DataAccessLayer.Data.Category.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

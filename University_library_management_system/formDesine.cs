@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using University_library_management_system.FormAplliction;
 
 namespace University_library_management_system
 {
@@ -16,14 +17,27 @@ namespace University_library_management_system
         public formDesine()
         {
             InitializeComponent();
-            
+               
         }
 
-        public void loadform(object Form)
+        public void LoadForm(object Form)
         {
             if (this.mainpanel.Controls.Count > 0)
+            {
+                // الحصول على مرجع للنموذج القديم
+                Form oldForm = this.mainpanel.Controls[0] as Form;
+
+                // الخطوة 2: إزالة النموذج من عناصر التحكم
                 this.mainpanel.Controls.RemoveAt(0);
 
+                // الخطوة 3: **هذه هي الخطوة الأكثر أهمية**
+                // التخلص من موارد النموذج القديم بشكل سليم لضمان إغلاق اتصال قاعدة البيانات
+                if (oldForm != null)
+                {
+                    oldForm.Close(); // لإطلاق أي موارد مرئية
+                    oldForm.Dispose(); // لتحرير الذاكرة والموارد غير المدارة
+                }
+            }
             Form f = Form as Form;
             f.TopLevel = false;
             f.Dock = DockStyle.Fill;
@@ -97,7 +111,23 @@ namespace University_library_management_system
 
         private void btnBookSetting_Click(object sender, EventArgs e)
         {
-            loadform(new test());
+            LoadForm(new test());
+        }
+
+        private void btnAuthor_Click(object sender, EventArgs e)
+        {
+            LoadForm(new Author_Form());
+        }
+
+        private void btnborrowsSetting_Click(object sender, EventArgs e)
+        {
+            LoadForm(new Borrower_Form());
+        }
+
+        private void btnCatogre_Click(object sender, EventArgs e)
+        {
+            LoadForm(new Category_Form());
+
         }
     }
 }

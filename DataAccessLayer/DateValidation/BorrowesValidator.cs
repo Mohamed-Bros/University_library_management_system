@@ -22,11 +22,22 @@ namespace DataAccessLayer.DateValidation
             RuleFor(x => x.Phone_Number).NotEmpty().WithMessage("الرقم مطلوب")
                .Length(9,20).WithMessage("يجب ان يكون الرقم بين 9 و20 رقم")
                .Matches(@"[0-9]").WithMessage("رقم الهاتف يجب ان يحتوي على رقم هاتف");
+
+            RuleFor(x => x.Email).NotEmpty().WithMessage("الإميل مطلوب")
+             .MaximumLength(200).WithMessage("لا يجب ان يتخطاء الإميل 200 حرف")
+             .EmailAddress().WithMessage("عنوان الإميل غير صالح")
+             .Must((borrower, email) => UniqeEmail(email, borrower.Borrower_ID)).WithMessage("الإميل موجود");
+
         }
 
         bool UniqeName(string name, int currentID)
         {
             return !_context.Borrowers.Any(x=>x.Name == name && x.Borrower_ID !=currentID);
+        }
+
+        bool UniqeEmail(string email, int currentID)
+        {
+            return !_context.Borrowers.Any(x => x.Email == email && x.Borrower_ID != currentID);
         }
     }
 }

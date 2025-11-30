@@ -54,11 +54,13 @@
             this.btnClear = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
+            this.cobAuthor_IDFilter = new System.Windows.Forms.ComboBox();
+            this.cobCategory_IDFilter = new System.Windows.Forms.ComboBox();
             this.titleTextBox1 = new System.Windows.Forms.TextBox();
             this.btnFilter = new System.Windows.Forms.Button();
-            this.cobCategory_IDFilter = new System.Windows.Forms.ComboBox();
-            this.cobAuthor_IDFilter = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
             author_IDLabel = new System.Windows.Forms.Label();
             copiesLabel = new System.Windows.Forms.Label();
             publication_YearLabel = new System.Windows.Forms.Label();
@@ -166,7 +168,7 @@
             this.btnAdd.TabIndex = 9;
             this.btnAdd.Text = "إضافه";
             this.btnAdd.UseVisualStyleBackColor = false;
-            this.btnAdd.Click += new System.EventHandler(this.button1_Click);
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // errorProvider1
             // 
@@ -347,9 +349,11 @@
             // panel3
             // 
             this.panel3.AutoScroll = true;
+            this.panel3.Controls.Add(this.label1);
+            this.panel3.Controls.Add(this.panel5);
+            this.panel3.Controls.Add(this.panel4);
             this.panel3.Controls.Add(this.cobAuthor_IDFilter);
             this.panel3.Controls.Add(this.cobCategory_IDFilter);
-            this.panel3.Controls.Add(this.panel4);
             this.panel3.Controls.Add(author_IDLabel1);
             this.panel3.Controls.Add(category_IDLabel1);
             this.panel3.Controls.Add(titleLabel1);
@@ -362,13 +366,21 @@
             this.panel3.Size = new System.Drawing.Size(1174, 98);
             this.panel3.TabIndex = 19;
             // 
-            // panel4
+            // cobAuthor_IDFilter
             // 
-            this.panel4.BackColor = System.Drawing.Color.Black;
-            this.panel4.Location = new System.Drawing.Point(7, 3);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(978, 15);
-            this.panel4.TabIndex = 28;
+            this.cobAuthor_IDFilter.FormattingEnabled = true;
+            this.cobAuthor_IDFilter.Location = new System.Drawing.Point(544, 38);
+            this.cobAuthor_IDFilter.Name = "cobAuthor_IDFilter";
+            this.cobAuthor_IDFilter.Size = new System.Drawing.Size(225, 27);
+            this.cobAuthor_IDFilter.TabIndex = 30;
+            // 
+            // cobCategory_IDFilter
+            // 
+            this.cobCategory_IDFilter.FormattingEnabled = true;
+            this.cobCategory_IDFilter.Location = new System.Drawing.Point(269, 38);
+            this.cobCategory_IDFilter.Name = "cobCategory_IDFilter";
+            this.cobCategory_IDFilter.Size = new System.Drawing.Size(188, 27);
+            this.cobCategory_IDFilter.TabIndex = 29;
             // 
             // titleTextBox1
             // 
@@ -388,23 +400,33 @@
             this.btnFilter.TabIndex = 22;
             this.btnFilter.Text = "فلتره";
             this.btnFilter.UseVisualStyleBackColor = false;
-            this.btnFilter.Click += new System.EventHandler(this.button1_Click_1);
+            this.btnFilter.Click += new System.EventHandler(this.btnFiltr_Click_1);
             // 
-            // cobCategory_IDFilter
+            // label1
             // 
-            this.cobCategory_IDFilter.FormattingEnabled = true;
-            this.cobCategory_IDFilter.Location = new System.Drawing.Point(269, 38);
-            this.cobCategory_IDFilter.Name = "cobCategory_IDFilter";
-            this.cobCategory_IDFilter.Size = new System.Drawing.Size(188, 27);
-            this.cobCategory_IDFilter.TabIndex = 29;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(1021, 3);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(53, 22);
+            this.label1.TabIndex = 33;
+            this.label1.Text = "فلتره";
             // 
-            // cobAuthor_IDFilter
+            // panel5
             // 
-            this.cobAuthor_IDFilter.FormattingEnabled = true;
-            this.cobAuthor_IDFilter.Location = new System.Drawing.Point(544, 38);
-            this.cobAuthor_IDFilter.Name = "cobAuthor_IDFilter";
-            this.cobAuthor_IDFilter.Size = new System.Drawing.Size(225, 27);
-            this.cobAuthor_IDFilter.TabIndex = 30;
+            this.panel5.BackColor = System.Drawing.Color.Black;
+            this.panel5.Location = new System.Drawing.Point(1087, 11);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(60, 3);
+            this.panel5.TabIndex = 32;
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.Black;
+            this.panel4.Location = new System.Drawing.Point(28, 11);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(978, 3);
+            this.panel4.TabIndex = 31;
             // 
             // test
             // 
@@ -417,7 +439,6 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "test";
             this.Text = "test";
-            this.Load += new System.EventHandler(this.test_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bookBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.copiesNumericUpDown)).EndInit();
@@ -454,8 +475,10 @@
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Button btnFilter;
         private System.Windows.Forms.TextBox titleTextBox1;
-        private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.ComboBox cobAuthor_IDFilter;
         private System.Windows.Forms.ComboBox cobCategory_IDFilter;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Panel panel4;
     }
 }

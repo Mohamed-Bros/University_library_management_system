@@ -10,88 +10,103 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Manger
 {
-    internal class AuthorManger
+    public class AuthorManger
     {
-        private readonly UniversityLibraryManagementEntities Context;
+        //private readonly UniversityLibraryManagementEntities Context;
         
-        public AuthorManger()
-        {
-            Context = new UniversityLibraryManagementEntities();
-        }
+        //public AuthorManger()
+        //{
+        //    Context = new UniversityLibraryManagementEntities();
+        //}
 
         public ValidationResult AddAuthor(Author author)
         {
-            var authorValidation = new AuthorValidator(Context);
-            var reslut = authorValidation.Validate(author);
+            using (var Context = new UniversityLibraryManagementEntities()) {
 
-            if (reslut.IsValid)
-            {
-                Context.Authors.Add(author);
-                Context.SaveChanges();
+                var authorValidation = new AuthorValidator(Context);
+                var reslut = authorValidation.Validate(author);
+
+                if (reslut.IsValid)
+                {
+                    Context.Authors.Add(author);
+                    Context.SaveChanges();
+                }
+
+                return reslut;
             }
-
-            return reslut;
         }
 
         public List<Author> ReadeAuthor()
         {
-
-            return Context.Authors.ToList();
+            using (var Context = new UniversityLibraryManagementEntities())
+            {
+                return Context.Authors.ToList();
+            } 
         }
 
         public Author FindAuthor(int id)
         {
-            return Context.Authors.Find(id);
+            using (var Context = new UniversityLibraryManagementEntities())
+            {
+                return Context.Authors.Find(id);
+            } 
         }
 
         public ValidationResult UpdateAuthor(Author authorUpdate)
         {
-            var authorValidation = new AuthorValidator(Context);
-            var reslut = authorValidation.Validate(authorUpdate);
-
-            if (reslut.IsValid)
+            using (var Context = new UniversityLibraryManagementEntities())
             {
+                var authorValidation = new AuthorValidator(Context);
+                var reslut = authorValidation.Validate(authorUpdate);
 
-                Context.Authors.AddOrUpdate(authorUpdate);
+                if (reslut.IsValid)
+                {
 
-                Context.SaveChanges();
+                    Context.Authors.AddOrUpdate(authorUpdate);
+
+                    Context.SaveChanges();
 
 
+                }
+
+                return reslut; 
             }
-
-            return reslut;
         }
 
         public void DeletAuthor(int id)
         {
-
-            Author author = FindAuthor(id);
-
-            if (author != null)
+            using (var Context = new UniversityLibraryManagementEntities())
             {
-                Context.Authors.Remove(author);
-                Context.SaveChanges();
+                Author author = Context.Authors.Find(id);
+
+                if (author != null)
+                {
+                    Context.Authors.Remove(author);
+                    Context.SaveChanges();
+                }
             }
         }
 
         public List<Author> FilterAuthor(String AuthorName)
         {
 
-
-            IQueryable<Author> query = Context.Authors;
-
-            string searchName = AuthorName.Trim();
-
-
-
-            if (!string.IsNullOrEmpty(searchName))
+            using (var Context = new UniversityLibraryManagementEntities())
             {
-                query = query.Where(e => e.Author_Name.Contains(searchName));
+                IQueryable<Author> query = Context.Authors;
+
+                string searchName = AuthorName.Trim();
+
+
+
+                if (!string.IsNullOrEmpty(searchName))
+                {
+                    query = query.Where(e => e.Author_Name.Contains(searchName));
+                }
+
+                List<Author> filteredResults = query.ToList();
+
+                return filteredResults;
             }
-
-            List<Author> filteredResults = query.ToList();
-
-            return filteredResults;
         }
     }
 }

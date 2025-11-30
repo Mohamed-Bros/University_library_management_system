@@ -21,10 +21,13 @@ namespace University_library_management_system
     public partial class test : Form
     {
         UniversityLibraryManagementEntities contxt = new UniversityLibraryManagementEntities();
+
+        DataGridViewRow clickedRow = null;
+
         public test()
         {
             InitializeComponent();
-           
+            initialization();
         }
 
         
@@ -69,7 +72,6 @@ namespace University_library_management_system
 
         }
 
-        DataGridViewRow clickedRow = null;
 
 
         
@@ -87,7 +89,7 @@ namespace University_library_management_system
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnAdd_Click(object sender, EventArgs e)
         {
             bookBindingSource.EndEdit();
 
@@ -99,12 +101,65 @@ namespace University_library_management_system
             CheckValue(result);
             UpdateTable();
         }
-        private void test_Load(object sender, EventArgs e)
-        {
-            initialization();
 
+        private void update_Click(object sender, EventArgs e)
+        {
+
+            if (clickedRow != null)
+            {
+
+                Book book = initializationBook();
+
+                var bookManger = new BookManger();
+                bookManger.UpdateBook(book);
+
+
+
+                //تحديث الجدوال
+                UpdateTable();
+
+
+            }
+            else
+            {
+                MessageBox.Show("حدد صف من اجل التحديث");
+            }
 
         }
+
+        private void delet_Click(object sender, EventArgs e)
+        {
+            int idBook = int.Parse(clickedRow.Cells[0].Value.ToString());
+
+
+            BookManger bookManger = new BookManger();
+            bookManger.DeletBook(idBook);
+            bookBindingSource.DataSource = new Book();
+
+
+            UpdateTable();
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            bookBindingSource.DataSource = new Book();
+            clickedRow = null;
+
+        }
+
+        private void btnFiltr_Click_1(object sender, EventArgs e)
+        {
+            var bookManger = new BookManger();
+
+            int? idAuthor = int.Parse(cobAuthor_IDFilter.SelectedValue.ToString());
+            int? idCategory = int.Parse(cobCategory_IDFilter.SelectedValue.ToString());
+
+
+            var bookFillterList = bookManger.FilterBook(titleTextBox1.Text, idAuthor, idCategory);
+
+            UpdateTable(bookFillterList);
+        }
+
         #endregion
 
         bool CheckValue(ValidationResult result)
@@ -187,67 +242,11 @@ namespace University_library_management_system
             Book book = bookBindingSource.Current as Book;
             book.Author_ID = book.Author_ID == -1 ? null : book.Author_ID;
             book.Category_ID = book.Category_ID == -1 ? null : book.Category_ID;
-            book.Book_ID = 0;
+            
             return book;
         }
         #endregion
 
-        private void update_Click(object sender, EventArgs e)
-        {
-
-            if (clickedRow != null)
-            {
-
-                Book book = initializationBook();
-
-                var bookManger = new BookManger();
-                bookManger.UpdateBook(book);
-                
-
-               
-                //تحديث الجدوال
-                UpdateTable();
-
-                
-            }
-            else
-            {
-                MessageBox.Show("حدد صف من اجل التحديث");
-            }
-            
-        }
-
-        private void delet_Click(object sender, EventArgs e)
-        {
-            int idBook = int.Parse(clickedRow.Cells[0].Value.ToString());
-
-
-            BookManger bookManger = new BookManger();
-            bookManger.DeletBook(idBook);
-            bookBindingSource.DataSource = new Book();
-
-
-            UpdateTable();
-        }
-
-        private void btnClear_Click(object sender, EventArgs e)
-        {
-            bookBindingSource.DataSource = new Book();
-            clickedRow = null;
-
-        }
-
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-            var bookManger = new BookManger();
-
-            int? idAuthor = int.Parse(cobAuthor_IDFilter.SelectedValue.ToString());
-            int? idCategory = int.Parse(cobCategory_IDFilter.SelectedValue.ToString());
-
-
-            var bookFillterList = bookManger.FilterBook(titleTextBox1.Text, idAuthor, idCategory);
-            
-            UpdateTable(bookFillterList);
-        }
+       
     }
 }

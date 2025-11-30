@@ -18,6 +18,7 @@ namespace DataAccessLayer.Data
         public UniversityLibraryManagementEntities()
             : base("name=UniversityLibraryManagementEntities")
         {
+            this.Configuration.LazyLoadingEnabled = false;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

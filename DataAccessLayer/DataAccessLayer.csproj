@@ -199,7 +199,7 @@
     <Compile Include="Manger\AuthorManger.cs" />
     <Compile Include="Manger\BookManger.cs" />
     <Compile Include="Manger\BorrorwerManger.cs" />
-    <Compile Include="Manger\BorrorwingManger.cs" />
+    <Compile Include="Manger\BorrowingManger.cs" />
     <Compile Include="Manger\CategoryManger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
