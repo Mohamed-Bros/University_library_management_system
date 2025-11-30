@@ -210,6 +210,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormAplliction\Author_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAplliction\Author_Form.Designer.cs">
+      <DependentUpon>Author_Form.cs</DependentUpon>
+    </Compile>
     <Compile Include="formDesine.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -232,6 +238,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAplliction\Author_Form.resx">
+      <DependentUpon>Author_Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="formDesine.resx">
       <DependentUpon>formDesine.cs</DependentUpon>

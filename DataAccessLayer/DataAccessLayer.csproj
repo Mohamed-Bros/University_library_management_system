@@ -191,9 +191,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
+    <Compile Include="DateValidation\AuthorValidator.cs" />
     <Compile Include="DateValidation\BookValidator.cs" />
     <Compile Include="DateValidation\BorrowesValidator.cs" />
+    <Compile Include="DateValidation\BorrowingValidator.cs" />
+    <Compile Include="DateValidation\CategoryValidator.cs" />
+    <Compile Include="Manger\AuthorManger.cs" />
     <Compile Include="Manger\BookManger.cs" />
+    <Compile Include="Manger\BorrorwerManger.cs" />
+    <Compile Include="Manger\BorrorwingManger.cs" />
+    <Compile Include="Manger\CategoryManger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
