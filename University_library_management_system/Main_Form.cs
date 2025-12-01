@@ -143,5 +143,34 @@ namespace University_library_management_system
         {
             Application.Exit();
         }
+
+        #region الشريط العلوي
+        private bool isDragging = false;
+        private int mouseX;
+        private int mouseY;
+        private void panel1_MouseUp(object sender, MouseEventArgs e)
+        {
+            isDragging = false;
+        }
+
+        private void panel1_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                isDragging = true;
+                mouseX = e.X;
+                mouseY = e.Y;
+            }
+        }
+
+        private void panel1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (isDragging)
+            {
+                this.Left = this.Left + (e.X - mouseX);
+                this.Top = this.Top + (e.Y - mouseY);
+            }
+        }
+        #endregion
     }
 }
