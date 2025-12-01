@@ -20,7 +20,6 @@ namespace University_library_management_system
 {
     public partial class test : Form
     {
-        UniversityLibraryManagementEntities contxt = new UniversityLibraryManagementEntities();
 
         DataGridViewRow clickedRow = null;
 
@@ -111,8 +110,9 @@ namespace University_library_management_system
                 Book book = initializationBook();
 
                 var bookManger = new BookManger();
-                bookManger.UpdateBook(book);
+                var result = bookManger.UpdateBook(book);
 
+                CheckValue(result);
 
 
                 //تحديث الجدوال
@@ -202,7 +202,8 @@ namespace University_library_management_system
         private void initializationAllComboBox()
         {
             //initialization Author ComboBox()
-            var authorsList = contxt.Authors.ToList();
+            var authorManger = new AuthorManger();
+            var authorsList = authorManger.ReadeAuthor();
             var authorNull = new Author() { Author_ID = -1, Author_Name = "nono" };
             authorsList.Insert(0, authorNull);
 
@@ -211,7 +212,8 @@ namespace University_library_management_system
             author_IDComboBox.ValueMember = nameof(Author.Author_ID);
 
             //initialization Categories ComboBox()
-            var categoriesList = contxt.Categories.ToList();
+            var categoryManger = new CategoryManger();
+            var categoriesList = categoryManger.ReadeCategory();
             var categoryNull = new Category() { Category_ID = -1, Category_Name = "nono" };
             categoriesList.Insert(0, categoryNull);
 

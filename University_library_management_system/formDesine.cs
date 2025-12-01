@@ -27,15 +27,14 @@ namespace University_library_management_system
                 // الحصول على مرجع للنموذج القديم
                 Form oldForm = this.mainpanel.Controls[0] as Form;
 
-                // الخطوة 2: إزالة النموذج من عناصر التحكم
+                //  إزالة النموذج من عناصر التحكم
                 this.mainpanel.Controls.RemoveAt(0);
 
-                // الخطوة 3: **هذه هي الخطوة الأكثر أهمية**
-                // التخلص من موارد النموذج القديم بشكل سليم لضمان إغلاق اتصال قاعدة البيانات
+                // التخلص من بينات النافده من الداكره
                 if (oldForm != null)
                 {
-                    oldForm.Close(); // لإطلاق أي موارد مرئية
-                    oldForm.Dispose(); // لتحرير الذاكرة والموارد غير المدارة
+                    oldForm.Close(); 
+                    oldForm.Dispose(); 
                 }
             }
             Form f = Form as Form;
@@ -127,7 +126,11 @@ namespace University_library_management_system
         private void btnCatogre_Click(object sender, EventArgs e)
         {
             LoadForm(new Category_Form());
+        }
 
+        private void btnborrowingSetting_Click(object sender, EventArgs e)
+        {
+            LoadForm(new Borrowing_Form());
         }
     }
 }

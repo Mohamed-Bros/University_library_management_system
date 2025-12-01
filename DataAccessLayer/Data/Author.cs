@@ -20,7 +20,7 @@ namespace DataAccessLayer.Data
             this.Books = new HashSet<Book>();
         }
     
-        public int Author_ID{ get; set; }
+        public int Author_ID { get; set; }
         public string Author_Name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

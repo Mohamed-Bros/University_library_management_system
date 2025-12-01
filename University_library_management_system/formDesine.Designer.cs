@@ -400,6 +400,7 @@
             this.btnborrowingSetting.Text = "اعدادات الاستعرات";
             this.btnborrowingSetting.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnborrowingSetting.UseVisualStyleBackColor = false;
+            this.btnborrowingSetting.Click += new System.EventHandler(this.btnborrowingSetting_Click);
             // 
             // mainpanel
             // 

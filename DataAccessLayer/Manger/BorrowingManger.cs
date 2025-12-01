@@ -7,6 +7,7 @@ using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.Entity;
 
 namespace DataAccessLayer.Manger
 {
@@ -37,11 +38,12 @@ namespace DataAccessLayer.Manger
         {
             using (var Context = new UniversityLibraryManagementEntities())
             {
-                return Context.Borrowings.ToList();
+                return Context.Borrowings.Include(borrowing => borrowing.Book)
+                    .Include(borrowing => borrowing.Borrower).ToList();
             }
         }
 
-        public Borrowing FindBorrower(int id)
+        public Borrowing FindBorrowing(int id)
         {
             using (var Context = new UniversityLibraryManagementEntities())
             {
@@ -70,7 +72,7 @@ namespace DataAccessLayer.Manger
             }
         }
 
-        public void DeletBorrower(int id)
+        public void DeletBorrowing(int id)
         {
             using (var Context = new UniversityLibraryManagementEntities())
             {
@@ -105,6 +107,26 @@ namespace DataAccessLayer.Manger
                 List<Borrowing> filteredResults = query.ToList();
 
                 return filteredResults;
+            }
+        }
+
+        public bool ReturnBook(int idBorrowing)
+        {
+            using (var context = new UniversityLibraryManagementEntities())
+            {
+                var borrowing = context.Borrowings.Find(idBorrowing);
+                var book = context.Books.Find(borrowing.Book_ID);
+                if (borrowing.Date_Returned == null)
+                {
+                    borrowing.Date_Returned = DateTime.Now;
+                    book.Copies++;
+                    context.SaveChanges();
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
         }
     }

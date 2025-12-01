@@ -23,7 +23,7 @@ namespace DataAccessLayer.DateValidation
                 .Must(bookId => CheckTheBookCopies(bookId)).WithMessage("لا توجد نسخ من الكتاب");
 
 
-            RuleFor(x => x.Borrower_ID).NotEmpty().WithMessage("يجب اختيار الكتاب ")
+            RuleFor(x => x.Borrower_ID).NotEmpty().WithMessage("يجب اختيار المستعير ")
                 .Must((borrowing, idBorrower) => CheckHasBorrorwer(idBorrower, borrowing.Book_ID))
                 .WithMessage("لا يمكن للمستعير استعاره هو مستعير ولم يرجعه");
         }
@@ -32,7 +32,8 @@ namespace DataAccessLayer.DateValidation
         bool CheckHasBorrorwer(int idBorrower, int idBook)
         {
             return !_context.Borrowings.Where(x => idBorrower == x.Borrower_ID)
-                .Any(x => x.Book_ID == idBook && x.Date_Returned != null);
+                .Where(x => x.Book_ID == idBook)
+                .Any(x => x.Date_Returned == null);
         }
         //التحقق من وجود نسخ للكتاب
         bool CheckTheBookCopies(int idBook)
