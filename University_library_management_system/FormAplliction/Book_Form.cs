@@ -100,7 +100,6 @@ namespace University_library_management_system
             BookManger bookManger = new BookManger();
             var result = bookManger.AddBook(book);
             CheckValue(result);
-            UpdateTable();
         }
 
         private void update_Click(object sender, EventArgs e)
@@ -118,7 +117,6 @@ namespace University_library_management_system
 
 
                 //تحديث الجدوال
-                UpdateTable();
 
 
             }
@@ -131,12 +129,21 @@ namespace University_library_management_system
 
         private void delet_Click(object sender, EventArgs e)
         {
-            int idBook = int.Parse(clickedRow.Cells[0].Value.ToString());
+            if (clickedRow != null)
+            {
+                int idBook = int.Parse(clickedRow.Cells[0].Value.ToString());
 
 
-            BookManger bookManger = new BookManger();
-            bookManger.DeletBook(idBook);
-            bookBindingSource.DataSource = new Book();
+                BookManger bookManger = new BookManger();
+                bookManger.DeletBook(idBook);
+                bookBindingSource.DataSource = new Book();
+
+            }
+            else
+            {
+                MessageBox.Show("حدد صف من اجل التحديث");
+            }
+
 
 
             UpdateTable();
@@ -184,6 +191,11 @@ namespace University_library_management_system
 
                 }
                 return false;
+            }
+            else
+            {
+                UpdateTable();
+
             }
             return true;
         }

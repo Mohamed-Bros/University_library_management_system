@@ -69,6 +69,11 @@ namespace University_library_management_system.FormAplliction
                 }
                 return false;
             }
+            else
+            {
+                UpdateTable();
+
+            }
             return true;
         }
         #region Event_Control
@@ -95,7 +100,6 @@ namespace University_library_management_system.FormAplliction
             AuthorManger authorManger = new AuthorManger();
             var result = authorManger.AddAuthor(author);
             CheckValue(result);
-            UpdateTable();
         }
 
         private void btnupdate_Click(object sender, EventArgs e)
@@ -111,7 +115,6 @@ namespace University_library_management_system.FormAplliction
                 CheckValue(resultVildation);
 
                 //تحديث الجدوال
-                UpdateTable();
 
 
             }

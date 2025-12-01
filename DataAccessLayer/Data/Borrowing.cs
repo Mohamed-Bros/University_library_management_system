@@ -20,8 +20,9 @@ namespace DataAccessLayer.Data
         public System.DateTime Date_Borrowed { get; set; }
         public System.DateTime Due_Date { get; set; }
         public Nullable<System.DateTime> Date_Returned { get; set; }
-    
+
         public virtual Book Book { get; set; }
         public virtual Borrower Borrower { get; set; }
+
     }
 }

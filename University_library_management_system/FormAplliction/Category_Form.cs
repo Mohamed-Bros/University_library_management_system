@@ -69,6 +69,11 @@ namespace University_library_management_system.FormAplliction
                 }
                 return false;
             }
+            else
+            {
+                UpdateTable();
+            }
+            
             return true;
         }
 
@@ -84,7 +89,6 @@ namespace University_library_management_system.FormAplliction
             var result = categoryManger.AddCategory(category);
 
             CheckValue(result);
-            UpdateTable();
         }
 
         private void btnupdate_Click(object sender, EventArgs e)
@@ -100,7 +104,7 @@ namespace University_library_management_system.FormAplliction
                 CheckValue(resultVildation);
 
                 //تحديث الجدوال
-                UpdateTable();
+               
 
 
             }

@@ -91,6 +91,11 @@ namespace University_library_management_system.FormAplliction
                 }
                 return false;
             }
+            else
+            {
+                UpdateTable();
+
+            }
             return true;
         }
 
@@ -104,7 +109,6 @@ namespace University_library_management_system.FormAplliction
             var borrowingManger = new BorrowingManger();
             var result = borrowingManger.AddBorrower(borrowing);
             CheckValue(result);
-            UpdateTable();
         }
 
         private void btnupdate_Click(object sender, EventArgs e)
@@ -122,7 +126,6 @@ namespace University_library_management_system.FormAplliction
                 CheckValue(result);
 
                 //تحديث الجدوال
-                UpdateTable();
 
 
             }
@@ -245,9 +248,7 @@ namespace University_library_management_system.FormAplliction
             var borrowing = borrowingBindingSource.Current as Borrowing;
             borrowing.Borrower_ID = borrowing.Borrower_ID == -1 ? 0 : borrowing.Borrower_ID;
             borrowing.Book_ID = borrowing.Book_ID == -1 ? 0 : borrowing.Book_ID;
-            borrowing.Date_Borrowed = borrowing.Date_Borrowed == null ? DateTime.Now : borrowing.Date_Borrowed;
-            borrowing.Due_Date = borrowing.Due_Date == null ? DateTime.Now : borrowing.Due_Date;
-
+          
             return borrowing;
         }
         #endregion

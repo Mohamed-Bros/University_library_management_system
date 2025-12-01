@@ -24,7 +24,7 @@ namespace DataAccessLayer.Manger
                 {
                     Book  book = Context.Books.Find(borrowing.Book_ID) ;
                     book.Copies--;
-                        
+                    borrowing.Date_Borrowed = DateTime.Now;
 
                     Context.Borrowings.Add(borrowing);
                     Context.SaveChanges();

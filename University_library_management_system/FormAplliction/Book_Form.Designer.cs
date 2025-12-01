@@ -199,6 +199,11 @@
             this.copiesNumericUpDown.Name = "copiesNumericUpDown";
             this.copiesNumericUpDown.Size = new System.Drawing.Size(200, 27);
             this.copiesNumericUpDown.TabIndex = 12;
+            this.copiesNumericUpDown.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // publication_YearDateTimePicker
             // 

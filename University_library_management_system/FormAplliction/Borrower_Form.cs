@@ -59,6 +59,11 @@ namespace University_library_management_system.FormAplliction
                 }
                 return false;
             }
+            else
+            {
+                UpdateTable();
+
+            }
             return true;
         }
         private void UpdateTable()
@@ -107,7 +112,6 @@ namespace University_library_management_system.FormAplliction
             var result = borrorwerManger.AddBorrower(borrower);
 
             CheckValue(result);
-            UpdateTable();
         }
 
         private void btnupdate_Click(object sender, EventArgs e)
@@ -135,15 +139,25 @@ namespace University_library_management_system.FormAplliction
 
         private void btnDelet_Click(object sender, EventArgs e)
         {
-            int idBorrorwe = int.Parse(clickedRow.Cells[0].Value.ToString());
+
+            if (clickedRow != null)
+            {
+                int idBorrorwe = int.Parse(clickedRow.Cells[0].Value.ToString());
 
 
-            var borrorwerManger = new BorrorwerManger();
-            borrorwerManger.DeletBorrower(idBorrorwe);
-            borrowerBindingSource.DataSource = new Borrower();
+                var borrorwerManger = new BorrorwerManger();
+                borrorwerManger.DeletBorrower(idBorrorwe);
+                borrowerBindingSource.DataSource = new Borrower();
 
 
-            UpdateTable();
+                UpdateTable();
+
+            }
+            else
+            {
+                MessageBox.Show("حدد صف من اجل التحديث");
+            }
+            
         }
 
         private void btnClear_Click(object sender, EventArgs e)

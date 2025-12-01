@@ -347,7 +347,7 @@
             // 
             // date_BorrowedDateTimePicker
             // 
-            this.date_BorrowedDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.borrowingBindingSource, "Date_Borrowed", true));
+            this.date_BorrowedDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.borrowingBindingSource, "Date_Borrowed", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, "-1"));
             this.date_BorrowedDateTimePicker.Location = new System.Drawing.Point(28, 90);
             this.date_BorrowedDateTimePicker.Name = "date_BorrowedDateTimePicker";
             this.date_BorrowedDateTimePicker.Size = new System.Drawing.Size(200, 27);
