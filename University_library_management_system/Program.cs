@@ -17,7 +17,7 @@ namespace University_library_management_system
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new formDesine());
+            Application.Run(new Main_Form());
         }
     }
 }
