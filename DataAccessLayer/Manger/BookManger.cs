@@ -69,17 +69,28 @@ namespace DataAccessLayer.Manger
             }
         }
 
-        public void DeletBook(int id)
+        public bool DeletBook(int id)
         {
             using (var Context = new UniversityLibraryManagementEntities())
             {
                 Book book = Context.Books.Find(id);
-
                 if (book != null)
                 {
-                    Context.Books.Remove(book);
-                    Context.SaveChanges();
+                    bool isborrowingHasbook = Context.Borrowings.Any(a => a.Book_ID == id);
+
+                    if (isborrowingHasbook)
+                    {
+                        return false;
+                    }
+                    else
+                    {
+
+                        Context.Books.Remove(book);
+                        Context.SaveChanges();
+                        return true;
+                    }
                 }
+                return false;
             }
         }
 

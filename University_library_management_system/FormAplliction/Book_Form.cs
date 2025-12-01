@@ -135,7 +135,18 @@ namespace University_library_management_system
 
 
                 BookManger bookManger = new BookManger();
-                bookManger.DeletBook(idBook);
+                 var canDelet = bookManger.DeletBook(idBook);
+                if (!canDelet)
+                {
+                    MessageBox.Show("لا يمكن حذف هدا الكتاب لانه له علاقه بجدول المستعيرين");
+                }
+                else
+                {
+                    UpdateTable();
+                }
+               
+                
+                
                 bookBindingSource.DataSource = new Book();
 
             }
@@ -146,7 +157,7 @@ namespace University_library_management_system
 
 
 
-            UpdateTable();
+            
         }
 
         private void btnClear_Click(object sender, EventArgs e)
