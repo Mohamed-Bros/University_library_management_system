@@ -45,6 +45,12 @@
             this.btnupdate = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.addressTextBox = new System.Windows.Forms.TextBox();
+            this.borrowerBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.borrower_IDTextBox = new System.Windows.Forms.TextBox();
+            this.emailTextBox = new System.Windows.Forms.TextBox();
+            this.nameTextBox = new System.Windows.Forms.TextBox();
+            this.phone_NumberTextBox = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.txbPhonNumberFilter = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -53,12 +59,6 @@
             this.txbName = new System.Windows.Forms.TextBox();
             this.btnFilter = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.borrowerBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.phone_NumberTextBox = new System.Windows.Forms.TextBox();
-            this.nameTextBox = new System.Windows.Forms.TextBox();
-            this.emailTextBox = new System.Windows.Forms.TextBox();
-            this.borrower_IDTextBox = new System.Windows.Forms.TextBox();
-            this.addressTextBox = new System.Windows.Forms.TextBox();
             author_IDLabel1 = new System.Windows.Forms.Label();
             titleLabel1 = new System.Windows.Forms.Label();
             phone_NumberLabel = new System.Windows.Forms.Label();
@@ -71,9 +71,9 @@
             this.tableLayoutPanel2.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.borrowerBindingSource)).BeginInit();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.borrowerBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // author_IDLabel1
@@ -93,6 +93,51 @@
             titleLabel1.Size = new System.Drawing.Size(56, 19);
             titleLabel1.TabIndex = 26;
             titleLabel1.Text = ":الاسم";
+            // 
+            // phone_NumberLabel
+            // 
+            phone_NumberLabel.AutoSize = true;
+            phone_NumberLabel.Location = new System.Drawing.Point(318, 53);
+            phone_NumberLabel.Name = "phone_NumberLabel";
+            phone_NumberLabel.Size = new System.Drawing.Size(86, 19);
+            phone_NumberLabel.TabIndex = 8;
+            phone_NumberLabel.Text = ":رقم الهاتف";
+            // 
+            // nameLabel
+            // 
+            nameLabel.AutoSize = true;
+            nameLabel.Location = new System.Drawing.Point(590, 90);
+            nameLabel.Name = "nameLabel";
+            nameLabel.Size = new System.Drawing.Size(56, 19);
+            nameLabel.TabIndex = 6;
+            nameLabel.Text = ":الاسم";
+            // 
+            // emailLabel
+            // 
+            emailLabel.AutoSize = true;
+            emailLabel.Location = new System.Drawing.Point(318, 90);
+            emailLabel.Name = "emailLabel";
+            emailLabel.Size = new System.Drawing.Size(55, 19);
+            emailLabel.TabIndex = 4;
+            emailLabel.Text = ":الإميل";
+            // 
+            // borrower_IDLabel
+            // 
+            borrower_IDLabel.AutoSize = true;
+            borrower_IDLabel.Location = new System.Drawing.Point(590, 58);
+            borrower_IDLabel.Name = "borrower_IDLabel";
+            borrower_IDLabel.Size = new System.Drawing.Size(100, 19);
+            borrower_IDLabel.TabIndex = 2;
+            borrower_IDLabel.Text = ":ID المستعير";
+            // 
+            // addressLabel
+            // 
+            addressLabel.AutoSize = true;
+            addressLabel.Location = new System.Drawing.Point(590, 130);
+            addressLabel.Name = "addressLabel";
+            addressLabel.Size = new System.Drawing.Size(60, 19);
+            addressLabel.TabIndex = 0;
+            addressLabel.Text = ":العنوان";
             // 
             // tableLayoutPanel1
             // 
@@ -225,6 +270,52 @@
             this.panel1.Size = new System.Drawing.Size(780, 212);
             this.panel1.TabIndex = 2;
             // 
+            // addressTextBox
+            // 
+            this.addressTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.borrowerBindingSource, "Address", true));
+            this.addressTextBox.Location = new System.Drawing.Point(62, 127);
+            this.addressTextBox.Name = "addressTextBox";
+            this.addressTextBox.Size = new System.Drawing.Size(491, 27);
+            this.addressTextBox.TabIndex = 1;
+            // 
+            // borrowerBindingSource
+            // 
+            this.borrowerBindingSource.DataSource = typeof(DataAccessLayer.Data.Borrower);
+            // 
+            // borrower_IDTextBox
+            // 
+            this.borrower_IDTextBox.BackColor = System.Drawing.Color.White;
+            this.borrower_IDTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.borrowerBindingSource, "Borrower_ID", true));
+            this.borrower_IDTextBox.Location = new System.Drawing.Point(471, 55);
+            this.borrower_IDTextBox.Name = "borrower_IDTextBox";
+            this.borrower_IDTextBox.ReadOnly = true;
+            this.borrower_IDTextBox.Size = new System.Drawing.Size(82, 27);
+            this.borrower_IDTextBox.TabIndex = 3;
+            // 
+            // emailTextBox
+            // 
+            this.emailTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.borrowerBindingSource, "Email", true));
+            this.emailTextBox.Location = new System.Drawing.Point(62, 87);
+            this.emailTextBox.Name = "emailTextBox";
+            this.emailTextBox.Size = new System.Drawing.Size(219, 27);
+            this.emailTextBox.TabIndex = 5;
+            // 
+            // nameTextBox
+            // 
+            this.nameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.borrowerBindingSource, "Name", true));
+            this.nameTextBox.Location = new System.Drawing.Point(406, 87);
+            this.nameTextBox.Name = "nameTextBox";
+            this.nameTextBox.Size = new System.Drawing.Size(147, 27);
+            this.nameTextBox.TabIndex = 7;
+            // 
+            // phone_NumberTextBox
+            // 
+            this.phone_NumberTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.borrowerBindingSource, "Phone_Number", true));
+            this.phone_NumberTextBox.Location = new System.Drawing.Point(108, 50);
+            this.phone_NumberTextBox.Name = "phone_NumberTextBox";
+            this.phone_NumberTextBox.Size = new System.Drawing.Size(173, 27);
+            this.phone_NumberTextBox.TabIndex = 9;
+            // 
             // panel3
             // 
             this.panel3.AutoScroll = true;
@@ -299,97 +390,7 @@
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
-            // 
-            // borrowerBindingSource
-            // 
-            this.borrowerBindingSource.DataSource = typeof(DataAccessLayer.Data.Borrower);
-            // 
-            // phone_NumberTextBox
-            // 
-            this.phone_NumberTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.borrowerBindingSource, "Phone_Number", true));
-            this.phone_NumberTextBox.Location = new System.Drawing.Point(108, 50);
-            this.phone_NumberTextBox.Name = "phone_NumberTextBox";
-            this.phone_NumberTextBox.Size = new System.Drawing.Size(173, 27);
-            this.phone_NumberTextBox.TabIndex = 9;
-            // 
-            // phone_NumberLabel
-            // 
-            phone_NumberLabel.AutoSize = true;
-            phone_NumberLabel.Location = new System.Drawing.Point(318, 53);
-            phone_NumberLabel.Name = "phone_NumberLabel";
-            phone_NumberLabel.Size = new System.Drawing.Size(86, 19);
-            phone_NumberLabel.TabIndex = 8;
-            phone_NumberLabel.Text = ":رقم الهاتف";
-            // 
-            // nameTextBox
-            // 
-            this.nameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.borrowerBindingSource, "Name", true));
-            this.nameTextBox.Location = new System.Drawing.Point(406, 87);
-            this.nameTextBox.Name = "nameTextBox";
-            this.nameTextBox.Size = new System.Drawing.Size(147, 27);
-            this.nameTextBox.TabIndex = 7;
-            // 
-            // nameLabel
-            // 
-            nameLabel.AutoSize = true;
-            nameLabel.Location = new System.Drawing.Point(590, 90);
-            nameLabel.Name = "nameLabel";
-            nameLabel.Size = new System.Drawing.Size(56, 19);
-            nameLabel.TabIndex = 6;
-            nameLabel.Text = ":الاسم";
-            // 
-            // emailTextBox
-            // 
-            this.emailTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.borrowerBindingSource, "Email", true));
-            this.emailTextBox.Location = new System.Drawing.Point(62, 87);
-            this.emailTextBox.Name = "emailTextBox";
-            this.emailTextBox.Size = new System.Drawing.Size(219, 27);
-            this.emailTextBox.TabIndex = 5;
-            // 
-            // emailLabel
-            // 
-            emailLabel.AutoSize = true;
-            emailLabel.Location = new System.Drawing.Point(318, 90);
-            emailLabel.Name = "emailLabel";
-            emailLabel.Size = new System.Drawing.Size(55, 19);
-            emailLabel.TabIndex = 4;
-            emailLabel.Text = ":الإميل";
-            // 
-            // borrower_IDTextBox
-            // 
-            this.borrower_IDTextBox.BackColor = System.Drawing.Color.White;
-            this.borrower_IDTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.borrowerBindingSource, "Borrower_ID", true));
-            this.borrower_IDTextBox.Location = new System.Drawing.Point(471, 55);
-            this.borrower_IDTextBox.Name = "borrower_IDTextBox";
-            this.borrower_IDTextBox.ReadOnly = true;
-            this.borrower_IDTextBox.Size = new System.Drawing.Size(82, 27);
-            this.borrower_IDTextBox.TabIndex = 3;
-            // 
-            // borrower_IDLabel
-            // 
-            borrower_IDLabel.AutoSize = true;
-            borrower_IDLabel.Location = new System.Drawing.Point(590, 58);
-            borrower_IDLabel.Name = "borrower_IDLabel";
-            borrower_IDLabel.Size = new System.Drawing.Size(100, 19);
-            borrower_IDLabel.TabIndex = 2;
-            borrower_IDLabel.Text = ":ID المستعير";
-            // 
-            // addressTextBox
-            // 
-            this.addressTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.borrowerBindingSource, "Address", true));
-            this.addressTextBox.Location = new System.Drawing.Point(62, 127);
-            this.addressTextBox.Name = "addressTextBox";
-            this.addressTextBox.Size = new System.Drawing.Size(491, 27);
-            this.addressTextBox.TabIndex = 1;
-            // 
-            // addressLabel
-            // 
-            addressLabel.AutoSize = true;
-            addressLabel.Location = new System.Drawing.Point(590, 130);
-            addressLabel.Name = "addressLabel";
-            addressLabel.Size = new System.Drawing.Size(60, 19);
-            addressLabel.TabIndex = 0;
-            addressLabel.Text = ":العنوان";
+            this.errorProvider1.RightToLeft = true;
             // 
             // Borrower_Form
             // 
@@ -406,10 +407,10 @@
             this.panel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.borrowerBindingSource)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.borrowerBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -54,13 +54,13 @@
             this.btnClear = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.cobAuthor_IDFilter = new System.Windows.Forms.ComboBox();
             this.cobCategory_IDFilter = new System.Windows.Forms.ComboBox();
             this.titleTextBox1 = new System.Windows.Forms.TextBox();
             this.btnFilter = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
             author_IDLabel = new System.Windows.Forms.Label();
             copiesLabel = new System.Windows.Forms.Label();
             publication_YearLabel = new System.Windows.Forms.Label();
@@ -173,6 +173,7 @@
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
+            this.errorProvider1.RightToLeft = true;
             // 
             // author_IDComboBox
             // 
@@ -366,6 +367,32 @@
             this.panel3.Size = new System.Drawing.Size(1174, 98);
             this.panel3.TabIndex = 19;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(1021, 3);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(53, 22);
+            this.label1.TabIndex = 33;
+            this.label1.Text = "فلتره";
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.Color.Black;
+            this.panel5.Location = new System.Drawing.Point(1087, 11);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(60, 3);
+            this.panel5.TabIndex = 32;
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.Black;
+            this.panel4.Location = new System.Drawing.Point(28, 11);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(978, 3);
+            this.panel4.TabIndex = 31;
+            // 
             // cobAuthor_IDFilter
             // 
             this.cobAuthor_IDFilter.FormattingEnabled = true;
@@ -402,33 +429,7 @@
             this.btnFilter.UseVisualStyleBackColor = false;
             this.btnFilter.Click += new System.EventHandler(this.btnFiltr_Click_1);
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(1021, 3);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 22);
-            this.label1.TabIndex = 33;
-            this.label1.Text = "فلتره";
-            // 
-            // panel5
-            // 
-            this.panel5.BackColor = System.Drawing.Color.Black;
-            this.panel5.Location = new System.Drawing.Point(1087, 11);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(60, 3);
-            this.panel5.TabIndex = 32;
-            // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.Color.Black;
-            this.panel4.Location = new System.Drawing.Point(28, 11);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(978, 3);
-            this.panel4.TabIndex = 31;
-            // 
-            // test
+            // Book_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -437,7 +438,7 @@
             this.ClientSize = new System.Drawing.Size(1180, 768);
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "test";
+            this.Name = "Book_Form";
             this.Text = "test";
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bookBindingSource)).EndInit();

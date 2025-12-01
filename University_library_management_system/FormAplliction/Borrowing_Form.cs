@@ -41,6 +41,7 @@ namespace University_library_management_system.FormAplliction
             
             clickedRow = null;
 
+            errorProvider1.Clear();
 
         }
 
@@ -54,13 +55,14 @@ namespace University_library_management_system.FormAplliction
                 Borrorwing_ID = borrorwing.Borrowing_ID,
                 Book = borrorwing.Book.Title,
                 BorrowerName = borrorwing.Borrower.Name,
-                Date_Borrowed = borrorwing.Date_Borrowed,
-                Due_Date = borrorwing.Due_Date,
+                Date_Borrowed = borrorwing.Date_Borrowed ,
+                Due_Date = borrorwing.Due_Date ,
                 DataReturn = borrorwing.Date_Returned == null ? "لم يسلم" : borrorwing.Date_Returned.Value.ToString()
             }).ToList();
 
             clickedRow = null;
 
+            errorProvider1.Clear();
 
         }
 
@@ -162,13 +164,13 @@ namespace University_library_management_system.FormAplliction
         {
             var borrowingManger = new BorrowingManger();
 
-            int? idBook = int.Parse(cobBook_IDFilter.SelectedValue.ToString());
-            int? idBorrower = int.Parse(cobBorrower_IDFilter.SelectedValue.ToString());
+            int idBook = int.Parse(cobBook_IDFilter.SelectedValue.ToString());
+            int idBorrower = int.Parse(cobBorrower_IDFilter.SelectedValue.ToString());
 
 
-            var bookFillterList = borrowingManger.FilterBorrower(idBorrower, idBook);
+            var borrowingFillterList = borrowingManger.FilterBorrower(idBorrower, idBook);
 
-            UpdateTable(bookFillterList);
+            UpdateTable(borrowingFillterList);
         }
 
         private void dataGridViewDisplay_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -243,6 +245,8 @@ namespace University_library_management_system.FormAplliction
             var borrowing = borrowingBindingSource.Current as Borrowing;
             borrowing.Borrower_ID = borrowing.Borrower_ID == -1 ? 0 : borrowing.Borrower_ID;
             borrowing.Book_ID = borrowing.Book_ID == -1 ? 0 : borrowing.Book_ID;
+            borrowing.Date_Borrowed = borrowing.Date_Borrowed == null ? DateTime.Now : borrowing.Date_Borrowed;
+            borrowing.Due_Date = borrowing.Due_Date == null ? DateTime.Now : borrowing.Due_Date;
 
             return borrowing;
         }

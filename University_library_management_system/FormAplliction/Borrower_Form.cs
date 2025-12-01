@@ -76,6 +76,7 @@ namespace University_library_management_system.FormAplliction
 
             clickedRow = null;
 
+            errorProvider1.Clear();
 
         }
 
@@ -93,6 +94,7 @@ namespace University_library_management_system.FormAplliction
 
             clickedRow = null;
 
+            errorProvider1.Clear();
 
         }
         private void btnAdd_Click(object sender, EventArgs e)

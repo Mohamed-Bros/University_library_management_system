@@ -90,6 +90,8 @@ namespace DataAccessLayer.Manger
 
                 IQueryable<Book> query = Context.Books;
 
+                query = query.Include(b => b.Author).Include(b => b.Category);
+
                 string searchName = bookName.Trim();
 
 

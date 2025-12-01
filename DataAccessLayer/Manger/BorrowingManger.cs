@@ -92,6 +92,7 @@ namespace DataAccessLayer.Manger
             {
 
                 IQueryable<Borrowing> query = Context.Borrowings;
+                query = query.Include(b => b.Borrower).Include(b => b.Book);
 
                 if (idBorrower > 0 && idBorrower != null)
                 {

@@ -50,7 +50,8 @@ namespace University_library_management_system
             
             clickedRow = null;
 
-            
+            errorProvider1.Clear();
+
         }
 
         private void UpdateTable(List<Book> bookListFillter)
@@ -67,13 +68,14 @@ namespace University_library_management_system
             }).ToList();
 
             clickedRow = null;
+            errorProvider1.Clear();
 
 
         }
 
 
 
-        
+
         #region Event_Control
         private void dataGridViewDisplayBook_CellClick(object sender, DataGridViewCellEventArgs e)
         {

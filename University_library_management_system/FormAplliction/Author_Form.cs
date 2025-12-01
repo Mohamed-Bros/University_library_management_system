@@ -34,6 +34,7 @@ namespace University_library_management_system.FormAplliction
             dataGridViewDisplay.DataSource = authorManger.ReadeAuthor();
            
             clickedRow = null;
+            errorProvider1.Clear();
 
         }
 
@@ -44,6 +45,7 @@ namespace University_library_management_system.FormAplliction
 
             clickedRow = null;
 
+            errorProvider1.Clear();
 
         }
         bool CheckValue(ValidationResult result)

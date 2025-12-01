@@ -41,11 +41,13 @@
             this.dataGridViewDisplay = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btmReturn = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
             this.btnDelet = new System.Windows.Forms.Button();
             this.btnupdate = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.date_ReturnedTextBox = new System.Windows.Forms.TextBox();
             this.book_IDComboBox = new System.Windows.Forms.ComboBox();
             this.borrower_IDComboBox = new System.Windows.Forms.ComboBox();
             this.borrowing_IDTextBox = new System.Windows.Forms.TextBox();
@@ -59,9 +61,7 @@
             this.cobBook_IDFilter = new System.Windows.Forms.ComboBox();
             this.btnFilter = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.date_ReturnedTextBox = new System.Windows.Forms.TextBox();
             this.borrowingBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.btmReturn = new System.Windows.Forms.Button();
             author_IDLabel1 = new System.Windows.Forms.Label();
             category_IDLabel1 = new System.Windows.Forms.Label();
             book_IDLabel = new System.Windows.Forms.Label();
@@ -83,20 +83,21 @@
             // author_IDLabel1
             // 
             author_IDLabel1.AutoSize = true;
-            author_IDLabel1.Location = new System.Drawing.Point(876, 50);
+            author_IDLabel1.Location = new System.Drawing.Point(920, 59);
             author_IDLabel1.Name = "author_IDLabel1";
-            author_IDLabel1.Size = new System.Drawing.Size(65, 19);
+            author_IDLabel1.Size = new System.Drawing.Size(108, 19);
             author_IDLabel1.TabIndex = 22;
-            author_IDLabel1.Text = ":المؤالف";
+            author_IDLabel1.Text = "اسم المستعير";
             // 
             // category_IDLabel1
             // 
             category_IDLabel1.AutoSize = true;
-            category_IDLabel1.Location = new System.Drawing.Point(553, 50);
+            category_IDLabel1.Location = new System.Drawing.Point(562, 56);
             category_IDLabel1.Name = "category_IDLabel1";
-            category_IDLabel1.Size = new System.Drawing.Size(56, 19);
+            category_IDLabel1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            category_IDLabel1.Size = new System.Drawing.Size(93, 19);
             category_IDLabel1.TabIndex = 24;
-            category_IDLabel1.Text = ":الفئات";
+            category_IDLabel1.Text = "اسم الكتاب:";
             // 
             // book_IDLabel
             // 
@@ -214,8 +215,21 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(3, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(374, 311);
+            this.panel2.Size = new System.Drawing.Size(373, 311);
             this.panel2.TabIndex = 1;
+            // 
+            // btmReturn
+            // 
+            this.btmReturn.BackColor = System.Drawing.Color.LimeGreen;
+            this.btmReturn.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Bold);
+            this.btmReturn.ForeColor = System.Drawing.Color.White;
+            this.btmReturn.Location = new System.Drawing.Point(105, 208);
+            this.btmReturn.Name = "btmReturn";
+            this.btmReturn.Size = new System.Drawing.Size(155, 52);
+            this.btmReturn.TabIndex = 22;
+            this.btmReturn.Text = "إرجاع";
+            this.btmReturn.UseVisualStyleBackColor = false;
+            this.btmReturn.Click += new System.EventHandler(this.btmReturn_Click);
             // 
             // btnClear
             // 
@@ -284,13 +298,25 @@
             this.panel1.Controls.Add(due_DateLabel);
             this.panel1.Controls.Add(this.due_DateDateTimePicker);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(383, 3);
+            this.panel1.Location = new System.Drawing.Point(382, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(788, 311);
+            this.panel1.Size = new System.Drawing.Size(789, 311);
             this.panel1.TabIndex = 2;
+            // 
+            // date_ReturnedTextBox
+            // 
+            this.date_ReturnedTextBox.BackColor = System.Drawing.Color.White;
+            this.date_ReturnedTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.borrowingBindingSource, "Date_Returned", true));
+            this.date_ReturnedTextBox.Location = new System.Drawing.Point(28, 161);
+            this.date_ReturnedTextBox.Name = "date_ReturnedTextBox";
+            this.date_ReturnedTextBox.ReadOnly = true;
+            this.date_ReturnedTextBox.Size = new System.Drawing.Size(200, 27);
+            this.date_ReturnedTextBox.TabIndex = 12;
             // 
             // book_IDComboBox
             // 
+            this.book_IDComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.book_IDComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.book_IDComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.borrowingBindingSource, "Book_ID", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, "-1"));
             this.book_IDComboBox.FormattingEnabled = true;
             this.book_IDComboBox.Location = new System.Drawing.Point(421, 121);
@@ -300,6 +326,8 @@
             // 
             // borrower_IDComboBox
             // 
+            this.borrower_IDComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.borrower_IDComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.borrower_IDComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.borrowingBindingSource, "Borrower_ID", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, "-1"));
             this.borrower_IDComboBox.FormattingEnabled = true;
             this.borrower_IDComboBox.Location = new System.Drawing.Point(421, 154);
@@ -309,10 +337,12 @@
             // 
             // borrowing_IDTextBox
             // 
+            this.borrowing_IDTextBox.BackColor = System.Drawing.Color.White;
             this.borrowing_IDTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.borrowingBindingSource, "Borrowing_ID", true));
-            this.borrowing_IDTextBox.Location = new System.Drawing.Point(421, 87);
+            this.borrowing_IDTextBox.Location = new System.Drawing.Point(542, 87);
             this.borrowing_IDTextBox.Name = "borrowing_IDTextBox";
-            this.borrowing_IDTextBox.Size = new System.Drawing.Size(200, 27);
+            this.borrowing_IDTextBox.ReadOnly = true;
+            this.borrowing_IDTextBox.Size = new System.Drawing.Size(79, 27);
             this.borrowing_IDTextBox.TabIndex = 5;
             // 
             // date_BorrowedDateTimePicker
@@ -377,16 +407,20 @@
             // 
             // cobBorrower_IDFilter
             // 
+            this.cobBorrower_IDFilter.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cobBorrower_IDFilter.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cobBorrower_IDFilter.FormattingEnabled = true;
-            this.cobBorrower_IDFilter.Location = new System.Drawing.Point(634, 47);
+            this.cobBorrower_IDFilter.Location = new System.Drawing.Point(671, 53);
             this.cobBorrower_IDFilter.Name = "cobBorrower_IDFilter";
             this.cobBorrower_IDFilter.Size = new System.Drawing.Size(225, 27);
             this.cobBorrower_IDFilter.TabIndex = 30;
             // 
             // cobBook_IDFilter
             // 
+            this.cobBook_IDFilter.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cobBook_IDFilter.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cobBook_IDFilter.FormattingEnabled = true;
-            this.cobBook_IDFilter.Location = new System.Drawing.Point(359, 47);
+            this.cobBook_IDFilter.Location = new System.Drawing.Point(353, 51);
             this.cobBook_IDFilter.Name = "cobBook_IDFilter";
             this.cobBook_IDFilter.Size = new System.Drawing.Size(188, 27);
             this.cobBook_IDFilter.TabIndex = 29;
@@ -407,33 +441,11 @@
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
-            // 
-            // date_ReturnedTextBox
-            // 
-            this.date_ReturnedTextBox.BackColor = System.Drawing.Color.White;
-            this.date_ReturnedTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.borrowingBindingSource, "Date_Returned", true));
-            this.date_ReturnedTextBox.Location = new System.Drawing.Point(28, 161);
-            this.date_ReturnedTextBox.Name = "date_ReturnedTextBox";
-            this.date_ReturnedTextBox.ReadOnly = true;
-            this.date_ReturnedTextBox.Size = new System.Drawing.Size(200, 27);
-            this.date_ReturnedTextBox.TabIndex = 12;
+            this.errorProvider1.RightToLeft = true;
             // 
             // borrowingBindingSource
             // 
             this.borrowingBindingSource.DataSource = typeof(DataAccessLayer.Data.Borrowing);
-            // 
-            // btmReturn
-            // 
-            this.btmReturn.BackColor = System.Drawing.Color.LimeGreen;
-            this.btmReturn.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Bold);
-            this.btmReturn.ForeColor = System.Drawing.Color.White;
-            this.btmReturn.Location = new System.Drawing.Point(105, 208);
-            this.btmReturn.Name = "btmReturn";
-            this.btmReturn.Size = new System.Drawing.Size(155, 52);
-            this.btmReturn.TabIndex = 22;
-            this.btmReturn.Text = "إرجاع";
-            this.btmReturn.UseVisualStyleBackColor = false;
-            this.btmReturn.Click += new System.EventHandler(this.btmReturn_Click);
             // 
             // Borrowing_Form
             // 

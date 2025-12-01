@@ -34,6 +34,7 @@ namespace University_library_management_system.FormAplliction
             dataGridViewDisplay.DataSource = categoryManger.ReadeCategory();
 
             clickedRow = null;
+            errorProvider1.Clear();
 
         }
 
@@ -43,6 +44,7 @@ namespace University_library_management_system.FormAplliction
             dataGridViewDisplay.DataSource = categoriesListFillter;
 
             clickedRow = null;
+            errorProvider1.Clear();
 
 
         }
